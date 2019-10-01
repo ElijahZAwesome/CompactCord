@@ -7,10 +7,10 @@ namespace CompactCord.Types
 {
     class User
     {
+        #nullable enable
         public static Snowflake ID;
         public static string Username;
         public static string Discriminator;
-        public static string Avatar;
         public static bool Bot;
         public static bool MFA;
         public static string Locale;
@@ -18,5 +18,8 @@ namespace CompactCord.Types
         public static string Email;
         public static int Flags;
         public static int PremiumType;
+
+        public static string? Avatar;
+
     }
 }

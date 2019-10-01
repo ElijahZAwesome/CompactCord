@@ -3,6 +3,7 @@
   <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
       <TargetFramework>net35-cf</TargetFramework>
+      <LangVersion>preview</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(TargetFramework)' == 'net35-cf'">
