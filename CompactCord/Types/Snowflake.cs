@@ -3,7 +3,7 @@ using System.Text;
 using CompactCord.PublicMethods;
 using CompactCord.PublicVariables;
 
-namespace CompactCord {
+namespace CompactCord.Types {
 
 	public class Snowflake
 	{
@@ -27,9 +27,9 @@ namespace CompactCord {
 			AsBytes = bytesVer;
 			AsString = bytesVer.ToString();
 			AsUint64 = UInt64.Parse(input);
-			byte[] results = new byte[22];
-			int index = Array.IndexOf(AsBytes, (byte)0x55);
-			Array.Copy(AsBytes, index, results, 0, 22);
+			byte[] results = new byte[42];
+			int index = Array.IndexOf(AsBytes, (byte)0x0);
+			Array.Copy(AsBytes, index, results, 0, 42);
 			float epochTime = (float)Bytes.ByteArrayToDecimal(results, 0) + Constants.DISCORDEPOCH;
 			TimeStampAsEpoch = epochTime;
 			DateTime dateTime = DateTime.Parse(epochTime.ToString());
