@@ -6,13 +6,14 @@ using System.Text;
 #nullable enable
 namespace CompactCord.Types
 {
-    class Message
+    class Webhook
     {
-
         public static Snowflake ID;
-        public static Snowflake ChannelID;
         public static Snowflake GuildID;
-        public static User Author;
-
+        public static Snowflake ChannelID;
+        public static User User;
+        public static string? Name;
+        public static string? Avatar;
+        public static string Token;
     }
 }

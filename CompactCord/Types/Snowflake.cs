@@ -3,6 +3,7 @@ using System.Text;
 using CompactCord.PublicMethods;
 using CompactCord.PublicVariables;
 
+#nullable enable
 namespace CompactCord.Types {
 
 	public class Snowflake

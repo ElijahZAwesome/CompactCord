@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+#nullable enable
 namespace CompactCord.Types
 {
 
@@ -75,7 +76,15 @@ namespace CompactCord.Types
         public static VoiceState[] VoiceStates;
         public static GuildMember[] Members;
         public static Channel[] Channels;
-        // Presence update object here
+        public static PresenceUpdate[] Presences;
+        public static int? MaxPresences;
+        public static int MaxMembers;
+        public static string? VanityURLCode;
+        public static string? Description;
+        public static string? Banner;
+        public static int PremiumTier;
+        public static int PremiumSubscriptionCount;
+        public static string PreferredLocale;
     }
 
     class GuildMember
