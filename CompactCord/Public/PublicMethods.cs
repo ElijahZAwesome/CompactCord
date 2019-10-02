@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace CompactCord
 {
@@ -32,5 +33,23 @@ namespace CompactCord
 				return string.Join(" ", data.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')).ToArray());
 			}
 		}
+
+        class DiscordSockets
+        {
+            public static string ConstructURI(string baseURI, List<KeyValuePair<string, object>> parameters)
+            {
+                if(baseURI.Substring(baseURI.Length - 1) != "/")
+                {
+                    baseURI += "/";
+                }
+                string finalURI = baseURI + "?";
+                for(int i = 0; i < parameters.Count; i++)
+                {
+                    finalURI += parameters[i].Key + "=" + parameters[i].Value.ToString() + "&";
+                }
+                finalURI = finalURI.Remove(finalURI.Length - 1, 1);
+                return finalURI;
+            }
+        }
 	}
 }
