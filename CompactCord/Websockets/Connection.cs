@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Noemax.WebSockets;
 using CompactCord.PublicVariables;
 using CompactCord.PublicMethods;
@@ -17,10 +14,10 @@ namespace CompactCord
             {
 
                 List<KeyValuePair<string, object>> parameters = new List<KeyValuePair<string, object>>()
-            {
-                new KeyValuePair<string, object>("v", Constants.GATEWAYVERSION),
-                new KeyValuePair<string, object>("encoding", Constants.GATEWAYENCODING)
-            };
+                {
+                    new KeyValuePair<string, object>("v", Constants.GATEWAYVERSION),
+                    new KeyValuePair<string, object>("encoding", Constants.GATEWAYENCODING)
+                };
 
                 string connectURI = DiscordSockets.ConstructURI(Constants.GATEWAYURL, parameters);
                 var client = new WebSocketClient<Websockets.ClientService>(connectURI);

@@ -34,7 +34,15 @@ namespace CompactCord
 			}
 		}
 
-        class DiscordSockets
+        public static class Strings
+        {
+            public static string StripPrefix(string text, string prefix)
+            {
+                return text.StartsWith(prefix) ? text.Substring(prefix.Length) : text;
+            }
+        }
+
+        public static class DiscordSockets
         {
             public static string ConstructURI(string baseURI, List<KeyValuePair<string, object>> parameters)
             {

@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Noemax.WebSockets" Version="17.301.0" />
+    <!-- <PackageReference Include="M2Mqtt" Version="4.3.0" /> -->
     <Reference Include="CodeBetter.Json.CF">
       <HintPath>..\Dependencies\CodeBetter.Json.CF.dll</HintPath>
     </Reference>
