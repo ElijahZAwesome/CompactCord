@@ -7,6 +7,7 @@ using CompactCord.PublicVariables;
 using System.Net;
 using Org.BouncyCastle.Crypto.Tls;
 using Org.BouncyCastle.Utilities.Zlib;
+using System.IO.Compression;
 
 /// <summary>
 /// Guess i'm making my own client now...
@@ -58,7 +59,8 @@ namespace CompactCord.Websockets
     Host: {SocketTrimmed}
     Upgrade: websocket
     Connection: Upgrade
-    Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+    Sec-WebSocket-Key: {Strings.Base64Encode(Strings.RandomString(20))}
+    Content-Encoding: identity
     {Constants.USERAGENT}
 
 
