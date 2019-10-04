@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
+using System.IO;
 
 namespace CompactCord
 {
@@ -13,7 +14,24 @@ namespace CompactCord
 	{
 		public static class Bytes
 		{
-			public static decimal ByteArrayToDecimal(byte[] src, int offset)
+
+            public static bool ByteArrayToFile(string fileName, byte[] byteArray)
+            {
+                try
+                {
+                    using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+                    {
+                        fs.Write(byteArray, 0, byteArray.Length);
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception caught in process: {0}", ex);
+                    return false;
+                }
+            }
+            public static decimal ByteArrayToDecimal(byte[] src, int offset)
 			{
 				var i1 = BitConverter.ToInt32(src, offset);
 				var i2 = BitConverter.ToInt32(src, offset + 4);

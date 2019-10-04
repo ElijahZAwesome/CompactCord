@@ -11,6 +11,7 @@ namespace CompactCord.Test
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        [Obsolete]
         static void Main()
         {
             //var instance = CompactCord.Websockets.Connection.ConnectToDiscord();

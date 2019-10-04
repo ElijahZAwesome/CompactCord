@@ -5,6 +5,8 @@ using System.IO;
 using CompactCord.PublicMethods;
 using CompactCord.PublicVariables;
 using System.Net;
+using Org.BouncyCastle.Crypto.Tls;
+using Org.BouncyCastle.Utilities.Zlib;
 
 /// <summary>
 /// Guess i'm making my own client now...
@@ -24,6 +26,7 @@ namespace CompactCord.Websockets
         public WebsocketClient(string URI, int port = -1)
         {
 
+            //ServicePointManager.CertificatePolicy = new TrustAllCertificatePolicy();
             SocketRaw = URI;
             if (port == -1)
             {
@@ -63,17 +66,29 @@ namespace CompactCord.Websockets
             return header;
         }
 
+        [Obsolete]
         public void Initialize()
         {
-            TCPClient = new TcpClient(Endpoint, Port);
+            TCPClient = new TcpClient();
+            TCPClient.Connect(Endpoint, Port);
             NetStream = TCPClient.GetStream();
+            Org.BouncyCastle.Security.SecureRandom sr = new Org.BouncyCastle.Security.SecureRandom();
+            TlsProtocolHandler handler = new TlsProtocolHandler(NetStream, sr);
+            handler.Connect(new TrustAllCertificatePolicy());
             Writer = new StreamWriter(NetStream);
             Writer.Write(GetHeader());
             Writer.Flush();
             byte[] buffer = new byte[1024];
             int bytesRead = NetStream.Read(buffer, 0, buffer.Length);
-            string response = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+            byte[] decompressBuffer = new byte[1024];
+            Zlib.DecompressData(buffer, out decompressBuffer);
+            string response = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+            string responseDecompressed = Encoding.ASCII.GetString(decompressBuffer, 0, bytesRead);
+            Console.WriteLine("=== RESPONSE ===");
             Console.WriteLine(response);
+            Console.WriteLine("=== DECOMPRESSED ===");
+            Console.WriteLine(responseDecompressed);
+            Bytes.ByteArrayToFile("out.raw", buffer);
             byte frameByte = Convert.ToByte("10000001", 2);
         }
 

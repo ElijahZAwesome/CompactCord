@@ -43,6 +43,12 @@
       <Reference Include="CodeBetter.Json.CF">
         <HintPath>..\Dependencies\CodeBetter.Json.CF.dll</HintPath>
       </Reference>
+      <Reference Include="crypto">
+        <HintPath>..\Dependencies\crypto.dll</HintPath>
+      </Reference>
+      <Reference Include="SproAdapterCe">
+        <HintPath>..\Dependencies\SproAdapterCe.dll</HintPath>
+      </Reference>
     </ItemGroup>
     
   </Project>
